@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R T Raviteja's Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base styles for body and smooth scrolling */
+        body {
+            font-family: 'Open Sans', sans-serif; /* Primary font for body text */
+            color: #454545; /* Dark gray for text */
+            background-color: #f8f9fa; /* Light background */
+            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Dark Mode Styles - Adjusted for full black and better visibility */
+        html.dark body {
+            background-color: #000000; /* Pure black for body */
+            color: #f0f0f0; /* Very light text for dark mode */
+        }
+
+        html.dark #header {
+            background: #111111; /* Darker sidebar */
+            border-right-color: #333333;
+        }
+
+        html.dark #header .profile h1,
+        html.dark #header .profile .social-links a,
+        html.dark #navbar .nav-link span {
+            color: #f0f0f0; /* Very light text for sidebar elements */
+        }
+        html.dark #navbar .nav-link:hover,
+        html.dark #navbar .nav-link.active {
+            background-color: #333333; /* Darker hover/active background */
+            color: #ffffff;
+        }
+
+        html.dark .section-title h2 {
+            color: #f0f0f0; /* Very light heading text in dark mode */
+        }
+        html.dark .section-title p {
+            color: #cccccc; /* Lighter gray for section descriptions */
+        }
+
+        html.dark .bg-white {
+            background-color: #111111; /* Darker background for white sections/cards */
+            color: #f0f0f0;
+            border-color: #333333;
+        }
+        html.dark .bg-gray-50 {
+            background-color: #000000; /* Pure black background for gray sections */
+            color: #f0f0f0;
+        }
+
+        /* Ensure all text within dark sections is visible */
+        html.dark .text-gray-600,
+        html.dark .text-gray-700,
+        html.dark .text-gray-800,
+        html.dark .text-gray-900 {
+            color: #f0f0f0 !important; /* Force light color for these specific text shades */
+        }
+        html.dark p,
+        html.dark li,
+        html.dark .italic {
+            color: #f0f0f0 !important; /* Ensure all paragraphs and list items are light */
+        }
+
+
+        html.dark .about-img,
+        html.dark .info-list ul i,
+        html.dark .progress .progress-bar,
+        html.dark .progress-label span,
+        html.dark .resume-item h4,
+        html.dark .resume-item h5,
+        html.dark .resume-item p,
+        html.dark .resume-item ul li,
+        html.dark .contact-info h4,
+        html.dark .contact-info p,
+        html.dark .php-email-form input,
+        html.dark .php-email-form textarea {
+            color: #f0f0f0; /* Ensure text/icons are very light in dark mode */
+        }
+
+        html.dark .info-list ul i,
+        html.dark .address i,
+        html.dark .email i,
+        html.dark .phone i,
+        html.dark .service-box .icon i {
+            color: #63b3ed; /* A lighter blue for icons in dark mode */
+        }
+
+        html.dark .progress-label {
+            color: #f0f0f0;
+        }
+        html.dark .progress .progress-bar {
+            background-color: #63b3ed; /* Lighter blue for progress bars */
+        }
+        html.dark .w-full.bg-gray-200 {
+            background-color: #333333; /* Darker track for progress bars */
+        }
+
+        html.dark .resume-item::before {
+            background-color: #333333; /* Darker timeline line */
+        }
+        html.dark .resume-item::after {
+            background-color: #63b3ed; /* Lighter blue dot */
+        }
+        html.dark .resume-item h5 {
+            color: #63b3ed; /* Lighter blue for dates */
+        }
+        html.dark .resume-item h4 {
+            color: #f0f0f0;
+        }
+        html.dark .resume-item p,
+        html.dark .resume-item ul li {
+            color: #cccccc;
+        }
+        html.dark .resume-item {
+            border-left-color: #333333;
+        }
+
+        html.dark .php-email-form,
+        html.dark .info {
+            background-color: #111111; /* Darker card/form backgrounds */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Stronger shadow in dark mode */
+            border-color: #333333;
+        }
+
+        html.dark .php-email-form input,
+        html.dark .php-email-form textarea {
+            background-color: #000000; /* Even darker input fields */
+            border-color: #333333;
+            color: #f0f0f0;
+        }
+        html.dark .php-email-form input::placeholder,
+        html.dark .php-email-form textarea::placeholder {
+            color: #aaaaaa;
+        }
+
+        html.dark .php-email-form button[type="submit"] {
+            background: #63b3ed; /* Lighter blue button */
+        }
+        html.dark .php-email-form button[type="submit"]:hover {
+            background: #4299e1;
+        }
+
+        /* REMOVED FOOTER STYLES AS IT'S BEING REPLACED */
+
+        /* Custom scrollbar for Webkit browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0d6efd; /* Bootstrap primary blue */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0b5ed7;
+        }
+        html.dark ::-webkit-scrollbar-track {
+            background: #1a1a1a; /* Darker scrollbar track */
+        }
+        html.dark ::-webkit-scrollbar-thumb {
+            background: #63b3ed; /* Lighter blue scrollbar thumb */
+        }
+        html.dark ::-webkit-scrollbar-thumb:hover {
+            background: #4299e1;
+        }
+
+
+        /* Main layout: fixed sidebar on desktop, content area */
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 300px; /* Fixed width for sidebar */
+            transition: all 0.5s;
+            z-index: 9997;
+            background: #fff;
+            border-right: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+            overflow-y: auto; /* Enable scrolling for sidebar content */
+        }
+
+        #main {
+            margin-left: 300px; /* Offset content by sidebar width */
+            transition: all 0.5s;
+        }
+
+        /* Responsive adjustments for mobile */
+        @media (max-width: 768px) {
+            #header {
+                left: -300px; /* Hide sidebar off-screen */
+                width: 250px; /* Slightly smaller for mobile */
+            }
+            #header.header-show {
+                left: 0; /* Show sidebar */
+            }
+            #main {
+                margin-left: 0; /* No offset for content on mobile */
+            }
+            .mobile-nav-toggle {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 9999;
+                background: #0d6efd;
+                color: #fff;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            }
+        }
+
+        /* Section heading styles */
+        .section-title {
+            padding-bottom: 30px;
+        }
+        .section-title h2 {
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            position: relative;
+            color: #333;
+        }
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #0d6efd;
+            bottom: 0;
+            left: 0;
+            margin-left: calc(50% - 25px); /* Center the underline */
+        }
+        .section-title p {
+            margin-bottom: 0;
+            color: #777;
+        }
+
+        /* About section specific styles */
+        .about-img {
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .info-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        .info-list ul li {
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        /* Changed icon for info-list */
+        .info-list ul i {
+            font-size: 10px; /* Smaller dot icon */
+            color: #0d6efd;
+            margin-right: 8px; /* Adjusted margin */
+        }
+        .info-list ul li strong {
+            margin-right: 4px; /* Space after strong tag before colon */
+        }
+
+
+        /* Skills section progress bars */
+        .progress .progress-bar {
+            height: 10px;
+            background-color: #0d6efd;
+            transition: width 0.9s ease-in-out;
+        }
+        .progress-label {
+            font-weight: 600;
+            color: #454545;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        .progress-label span {
+            font-family: 'Raleway', sans-serif;
+        }
+
+        /* Portfolio section - for project cards */
+        .portfolio-item {
+            overflow: hidden;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        .portfolio-item img {
+            transition: all 0.3s;
+        }
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        .portfolio-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(13, 110, 253, 0.8); /* Blue overlay */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: all 0.4s ease-in-out;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .portfolio-info h4 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .portfolio-info p {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .portfolio-links a {
+            color: #fff;
+            font-size: 20px;
+            margin: 0 8px;
+            transition: 0.3s;
+        }
+        .portfolio-links a:hover {
+            color: #e0e0e0;
+        }
+
+        /* Contact form styling */
+        .php-email-form .form-group {
+            margin-bottom: 1rem;
+        }
+        .php-email-form input, .php-email-form textarea {
+            border-radius: 4px;
+            box-shadow: none;
+            font-size: 14px;
+            padding: 10px 15px;
+            border: 1px solid #ced4da;
+            width: 100%;
+        }
+        .php-email-form textarea {
+            min-height: 120px;
+        }
+        .php-email-form button[type="submit"] {
+            background: #0d6efd;
+            border: 0;
+            padding: 10px 30px;
+            color: #fff;
+            transition: 0.4s;
+            border-radius: 4px;
+        }
+        .php-email-form button[type="submit"]:hover {
+            background: #0b5ed7;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Navigation Toggle -->
+    <i class="mobile-nav-toggle fas fa-bars hidden md:hidden"></i>
+
+    <!-- Header (Fixed Sidebar) -->
+    <header id="header" class="hidden md:flex">
+        <div class="profile flex flex-col items-center p-4">
+            <!-- Profile Image - Increased size to 250px x 250px -->
+            <img src="https://i.ibb.co/3yhdPx6L/clg-uniform-croped.jpg" onerror="this.onerror=null;this.src='https://placehold.co/250x250/4F46E5/FFFFFF?text=Your+Photo';" alt="R T Raviteja's Photo" class="img-fluid rounded-full border-4 border-white mb-4 shadow-lg" style="width: 250px; height: 250px; object-fit: cover;">
+            <h1 class="text-2xl font-semibold text-gray-800">R T Raviteja</h1>
+            <div class="social-links mt-3 flex space-x-3">
+                <a href="https://www.instagram.com/raviteja_2674/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-600 transition duration-300"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="https://www.linkedin.com/in/raviteja2674/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-600 transition duration-300"><i class="fab fa-linkedin-in text-xl"></i></a>
+                <a href="https://github.com/Raviteja-2674-2" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-600 transition duration-300"><i class="fab fa-github text-xl"></i></a>
+            </div>
+        </div>
+
+        <nav id="navbar" class="nav-menu mt-4 w-full">
+            <ul class="flex flex-col items-start px-4 space-y-2">
+                <li><a href="#about" class="nav-link scrollto active flex items-center py-2 px-3 rounded-md text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition duration-300 w-full"><i class="fas fa-user mr-3"></i> <span>About</span></a></li>
+                <li><a href="#skills" class="nav-link scrollto flex items-center py-2 px-3 rounded-md text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition duration-300 w-full"><i class="fas fa-cogs mr-3"></i> <span>Skills</span></a></li>
+                <li><a href="#extra-curricular" class="nav-link scrollto flex items-center py-2 px-3 rounded-md text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition duration-300 w-full"><i class="fas fa-trophy mr-3"></i> <span>Extra-curricular</span></a></li>
+                <li><a href="#projects" class="nav-link scrollto flex items-center py-2 px-3 rounded-md text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition duration-300 w-full"><i class="fas fa-book mr-3"></i> <span>Projects</span></a></li>
+                <li><a href="#resume" class="nav-link scrollto flex items-center py-2 px-3 rounded-md text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition duration-300 w-full"><i class="fas fa-file-alt mr-3"></i> <span>Resume</span></a></li>
+                <li><a href="#contact" class="nav-link scrollto flex items-center py-2 px-3 rounded-md text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition duration-300 w-full"><i class="fas fa-envelope mr-3"></i> <span>Contact</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="main">
+
+        <!-- Dark Mode Toggle Button -->
+        <button id="theme-toggle" class="fixed top-5 right-5 z-50 p-3 rounded-full bg-blue-500 text-white shadow-lg hover:bg-blue-600 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <i class="fas fa-moon text-xl" id="theme-icon"></i>
+        </button>
+
+        <!-- About Section -->
+        <section id="about" class="section-padding bg-white">
+            <div class="container mx-auto px-4">
+                <div class="section-title text-center">
+                    <h2>About</h2>
+                    <p class="mt-4 text-lg max-w-3xl mx-auto">
+                        Learn more about my journey, skills, and what drives me in the world of software development.
+                    </p>
+                </div>
+
+                <div class="flex flex-col lg:flex-row items-start gap-10 mt-10">
+                    <div class="lg:w-1/3 flex justify-center">
+                        <!-- About Image -->
+                        <img src="https://i.ibb.co/r2dWYsSS/IMG-20250727-225719.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x500/e0f2fe/1e40af?text=About+Image';" alt="R T Raviteja" class="w-full h-auto max-w-md object-cover rounded-xl shadow-xl border-4 border-blue-100">
+                    </div>
+                    <div class="lg:w-2/3">
+                        <h3 class="text-3xl font-bold text-gray-800 mb-4">Aspiring Software Development Engineer (SDE)</h3>
+                        <p class="italic text-gray-600 mb-6">
+                            With a solid foundation in object-oriented programming, data structures, algorithms, and full-stack web development, I am passionate about solving complex problems.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 info-list">
+                            <div>
+                                <ul>
+                                    <li><span class="text-blue-500 mr-2">&bull;</span> <strong>Name:</strong> R T Raviteja</li>
+                                    <li><span class="text-blue-500 mr-2">&bull;</span> <strong>Degree:</strong> B.Tech (4th Year)</li>
+                                    <li><span class="text-blue-500 mr-2">&bull;</span> <strong>University:</strong> Mohan Babu University, Tirupati</li>
+                                    <li><span class="text-blue-500 mr-2">&bull;</span> <strong>City:</strong> Tirupati, India</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul>
+                                    <li><span class="text-blue-500 mr-2">&bull;</span> <strong>Birthday:</strong> July 26, 2004</li>
+                                    <li><span class="text-blue-500 mr-2">&bull;</span> <strong>Email:</strong> raviteja2674.rt@gmail.com</li>
+                                    <li><span class="text-blue-500 mr-2">&bull;</span> <strong>Phone:</strong> +91 90635 62208</li>
+                                    <li><span class="text-blue-500 mr-2">&bull;</span> <strong>Freelance:</strong> Available</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="mt-6 text-gray-700 leading-relaxed">
+                            I am seeking to apply my technical and problem-solving skills in a challenging role where I can grow while adding value to the team. Beyond coding, I have a keen interest in writing and crafting narratives, which enhances my creative thinking and communication skills. I've been dedicated to building my portfolio since high school, continuously honing my abilities and embracing new technologies.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section-padding bg-white">
+            <div class="container mx-auto px-4">
+                <div class="section-title text-center">
+                    <h2>Skills</h2>
+                    <p class="mt-4 text-lg max-w-3xl mx-auto">
+                        My technical proficiencies and tools I use to bring ideas to life.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
+                    <!-- Programming Skills -->
+                    <div class="p-8 bg-gray-50 rounded-xl shadow-lg card-hover-effect border border-gray-100">
+                        <h3 class="text-3xl font-bold text-blue-700 mb-6 flex items-center">
+                            <i class="fas fa-code mr-3 text-blue-500"></i> Programming
+                        </h3>
+                        <ul class="list-none text-gray-700 space-y-3 text-lg">
+                            <li><span class="text-blue-500 mr-2">&bull;</span> Java (OOP, DSA)</li>
+                            <li><span class="text-blue-500 mr-2">&bull;</span> Python</li>
+                            <li><span class="text-blue-500 mr-2">&bull;</span> JavaScript</li>
+                            <li><span class="text-blue-500 mr-2">&bull;</span> Problem Solving</li>
+                        </ul>
+                    </div>
+
+                    <!-- Technologies Skills -->
+                    <div class="p-8 bg-gray-50 rounded-xl shadow-lg card-hover-effect border border-gray-100">
+                        <h3 class="text-3xl font-bold text-blue-700 mb-6 flex items-center">
+                            <i class="fas fa-laptop-code mr-3 text-blue-500"></i> Technologies
+                        </h3>
+                        <ul class="list-none text-gray-700 space-y-3 text-lg">
+                            <li><span class="text-blue-500 mr-2">&bull;</span> HTML</li>
+                            <li><span class="text-blue-500 mr-2">&bull;</span> CSS (Bootstrap)</li>
+                            <li><span class="text-blue-500 mr-2">&bull;</span> Full-Stack Web Development</li>
+                            <li><span class="text-blue-500 mr-2">&bull;</span> Cybersecurity Fundamentals</li>
+                            <li><span class="text-blue-500 mr-2">&bull;</span> MongoDB</li>
+                            <li><span class="text-blue-500 mr-2">&bull;</span> Node.js</li>
+                            <li><span class="text-blue-500 mr-2">&bull;</span> SQL</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tools Skills -->
+                    <div class="p-8 bg-gray-50 rounded-xl shadow-lg card-hover-effect border border-gray-100">
+                        <h3 class="text-3xl font-bold text-blue-700 mb-6 flex items-center">
+                            <i class="fas fa-tools mr-3 text-blue-500"></i> Tools
+                        </h3>
+                        <ul class="list-none text-gray-700 space-y-3 text-lg">
+                            <li><span class="text-blue-500 mr-2">&bull;</span> Git & GitHub</li>
+                            <li><span class="text-blue-500 mr-2">&bull;</span> VS Code</li>
+                            <li><span class="text-blue-500 mr-2">&bull;</span> [Add other specific tools like IDEs, build tools, etc.]</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Extra-curricular Activities Section -->
+        <section id="extra-curricular" class="section-padding bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="section-title text-center">
+                    <h2>Extra-curricular Activities</h2>
+                    <p class="mt-4 text-lg max-w-3xl mx-auto">
+                        My involvement in activities beyond academics, contributing to personal growth and diverse skills.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10">
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">Leadership & Community</h3>
+                        <div class="resume-item relative pl-8 pb-8 before:content-[''] before:absolute before:left-0 before:top-0 before:h-full before:w-0.5 before:bg-gray-300 before:rounded-full after:content-[''] after:absolute after:left-0 after:top-0 after:w-4 after:h-4 after:bg-blue-500 after:rounded-full after:-ml-2 after:mt-1.5 border-l border-gray-200">
+                            <h4 class="text-2xl font-bold text-gray-800">College Fest Coordinator</h4>
+                            <h5 class="text-blue-600 text-lg font-semibold">2022 - Present (All 4 Years)</h5>
+                            <p class="italic text-gray-600">Mohan Babu University, Tirupati</p>
+                            <ul class="list-none pl-5 text-gray-700 space-y-2">
+                                <li><span class="text-blue-500 mr-2">&bull;</span> Actively involved in organizing the annual college fest for all four years of my B.Tech program.</li>
+                                <li><span class="text-blue-500 mr-2">&bull;</span> Coordinated various aspects of event planning, logistics, and execution, demonstrating strong organizational and leadership skills.</li>
+                                <li><span class="text-blue-500 mr-2">&bull;</span> Collaborated with diverse teams to ensure successful and engaging events for the university community.</li>
+                            </ul>
+                        </div>
+                        <div class="resume-item relative pl-8 pb-8 before:content-[''] before:absolute before:left-0 before:top-0 before:h-full before:w-0.5 before:bg-gray-300 before:rounded-full after:content-[''] after:absolute after:left-0 after:top-0 after:w-4 after:h-4 after:bg-blue-500 after:rounded-full after:-ml-2 after:mt-1.5 border-l border-gray-200">
+                            <h4 class="text-2xl font-bold text-gray-800">2023-24 GDSC Member</h4>
+                            <h5 class="text-blue-600 text-lg font-semibold">Earned Sep 24, 2023</h5>
+                            <p class="italic text-gray-600">Google Developer Student Clubs (GDSC), Mohan Babu University</p>
+                            <ul class="list-none pl-5 text-gray-700 space-y-2">
+                                <li><span class="text-blue-500 mr-2">&bull;</span> Joined Google Developer Student Clubs as a member for the 2023-24 class, actively participating in tech community events.</li>
+                                <li><span class="text-blue-500 mr-2">&bull;</span> Engaged in workshops, study jams, and collaborative projects, enhancing practical development skills.</li>
+                            </ul>
+                        </div>
+                        <div class="resume-item relative pl-8 pb-8 before:content-[''] before:absolute before:left-0 before:top-0 before:h-full before:w-0.5 before:bg-gray-300 before:rounded-full after:content-[''] after:absolute after:left-0 after:top-0 after:w-4 after:h-4 after:bg-blue-500 after:rounded-full after:-ml-2 after:mt-1.5 border-l border-gray-200">
+                            <h4 class="text-2xl font-bold text-gray-800">Google Cloud Study Jam Pathways</h4>
+                            <h5 class="text-blue-600 text-lg font-semibold">September - October 2023</h5>
+                            <p class="italic text-gray-600">Google Developer Student Clubs (GDSC), Mohan Babu University</p>
+                            <ul class="list-none pl-5 text-gray-700 space-y-2">
+                                <li><span class="text-blue-500 mr-2">&bull;</span> Participated in Google Cloud Study Jam Pathways, gaining hands-on experience with Google Cloud technologies.</li>
+                                <li><span class="text-blue-500 mr-2">&bull;</span> Completed various modules and labs, enhancing cloud computing skills.</li>
+                            </ul>
+                        </div>
+                        <div class="resume-item relative pl-8 pb-8 before:content-[''] before:absolute before:left-0 before:top-0 before:h-full before:w-0.5 before:bg-gray-300 before:rounded-full after:content-[''] after:absolute after:left-0 after:top-0 after:w-4 after:h-4 after:bg-blue-500 after:rounded-full after:-ml-2 after:mt-1.5 border-l border-gray-200">
+                            <h4 class="text-2xl font-bold text-gray-800">Hacktoberfest 2023 Participant</h4>
+                            <h5 class="text-blue-600 text-lg font-semibold">October 2023</h5>
+                            <p class="italic text-gray-600">Awarded by Major League Hacking (MLH)</p>
+                            <ul class="list-none pl-5 text-gray-700 space-y-2">
+                                <li><span class="text-blue-500 mr-2">&bull;</span> Successfully submitted 4 Pull Requests (PRs) during Hacktoberfest, earning the participant badge and a Reward Kit.</li>
+                                <li><span class="text-blue-500 mr-2">&bull;</span> Engaged in open-source contributions, fostering collaboration and practical development skills.</li>
+                                <li><span class="text-blue-500 mr-2">&bull;</span> Participated in Global Hack Week: Open Source hosted by MLH, attending workshops and expanding knowledge in open-source practices.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">Certifications</h3>
+                        <div class="resume-item relative pl-8 pb-8 before:content-[''] before:absolute before:left-0 before:top-0 before:h-full before:w-0.5 before:bg-gray-300 before:rounded-full after:content-[''] after:absolute after:left-0 after:top-0 after:w-4 after:h-4 after:bg-blue-500 after:rounded-full after:-ml-2 after:mt-1.5 border-l border-gray-200">
+                            <ul class="list-none pl-5 text-gray-700 space-y-2">
+                                <li><span class="text-blue-500 mr-2">&bull;</span> Infosys - Java Fundamentals</li>
+                                <li><span class="text-blue-500 mr-2">&bull;</span> Infosys - Java With DSA</li>
+                                <li><span class="text-blue-500 mr-2">&bull;</span> Udemy - Python Course</li>
+                                <li><span class="text-blue-500 mr-2">&bull;</span> TCS ION - Soft Skills</li>
+                                <li><span class="text-blue-500 mr-2">&bull;</span> IIM Ahmedabad – Leadership Skills</li>
+                                <li><span class="text-blue-500 mr-2">&bull;</span> <i class="fas fa-external-link-alt text-blue-500 text-sm mr-2"></i> <a href="https://drive.google.com/drive/folders/12ZTzTJdz4_M0CKtSsv2Yn-ZoY_KFENjd?usp=drive_link" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">View All Certifications (Google Drive)</a></li>
+                            </ul>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-800 mt-10 mb-6 border-b-2 border-blue-500 pb-2">Hobbies & Interests</h3>
+                        <div class="resume-item relative pl-8 pb-8 before:content-[''] before:absolute before:left-0 before:top-0 before:h-full before:w-0.5 before:bg-gray-300 before:rounded-full after:content-[''] after:absolute after:left-0 after:top-0 after:w-4 after:h-4 after:bg-blue-500 after:rounded-full after:-ml-2 after:mt-1.5 border-l border-gray-200">
+                            <h4 class="text-2xl font-bold text-gray-800">Competitive Programming / Coding Challenges</h4>
+                            <h5 class="text-blue-600 text-lg font-semibold">Ongoing</h5>
+                            <p class="italic text-gray-600">Platforms (e.g., LeetCode, HackerRank, CodeChef)</p>
+                            <ul class="list-none pl-5 text-gray-700 space-y-2">
+                                <li><span class="text-blue-500 mr-2">&bull;</span> Solved 350+ problems on <a href="https://leetcode.com/u/Teja26/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">LeetCode</a> with Java, and a few with SQL, enhancing algorithmic and data structure proficiency.</li>
+                                <li><span class="text-blue-500 mr-2">&bull;</span> Actively participate in online coding contests to hone problem-solving and algorithmic skills.</li>
+                                <li><span class="text-blue-500 mr-2">&bull;</span> Continuously learning and applying advanced data structures and algorithms.</li>
+                            </ul>
+                        </div>
+                        <div class="resume-item relative pl-8 pb-8 before:content-[''] before:absolute before:left-0 before:top-0 before:h-full before:w-0.5 before:bg-gray-300 before:rounded-full after:content-[''] after:absolute after:left-0 after:top-0 after:w-4 after:h-4 after:bg-blue-500 after:rounded-full after:-ml-2 after:mt-1.5 border-l border-gray-200">
+                            <h4 class="text-2xl font-bold text-gray-800">Watching Tech News & Product Reviews</h4>
+                            <h5 class="text-blue-600 text-lg font-semibold">Ongoing</h5>
+                            <p class="italic text-gray-600">YouTube, Tech Blogs</p>
+                            <ul class="list-none pl-5 text-gray-700 space-y-2">
+                                <li><span class="text-blue-500 mr-2">&bull;</span> Regularly consume tech news and product reviews to stay updated on industry trends and innovations.</li>
+                                <li><span class="text-blue-500 mr-2">&bull;</span> Broaden knowledge beyond specific technologies to understand the broader product landscape.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section-padding bg-white">
+            <div class="container mx-auto px-4">
+                <div class="section-title text-center">
+                    <h2>Projects</h2>
+                    <p class="mt-4 text-lg max-w-3xl mx-auto">
+                        Showcasing a selection of my projects, highlighting my skills and problem-solving abilities.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-8 mt-10">
+                    <!-- Project: FOOD PHOTOGRAPHY WEBSITE -->
+                    <div class="portfolio-item w-full sm:w-1/2 lg:w-1/3">
+                        <!-- Image for Food Photography Website -->
+                        <img src="https://i.ibb.co/tMwT8T1P/image.png" onerror="this.onerror=null;this.src='https://placehold.co/600x400/D1E9FF/3B82F6?text=Food+Photography+Website';" class="w-full h-64 object-cover rounded-t-lg" alt="Food Photography Website">
+                        <div class="p-4">
+                            <h4 class="text-2xl font-bold text-gray-900 mb-2">Food Photography Website</h4>
+                            <p class="text-sm text-gray-700 mb-3">Built a visually appealing web app to display categorized food images with efficient data management and dynamic layout.</p>
+                            <p class="text-xs text-gray-500 mb-4">Tech Stack: HTML, CSS, Bootstrap, MongoDB</p>
+                            <div class="portfolio-links flex justify-start items-center">
+                                <a href="https://foodphotography.onrender.com" target="_blank" rel="noopener noreferrer" title="Live Demo" class="text-blue-600 hover:text-blue-800 transition duration-300 flex items-center text-base">
+                                    Live Demo <i class="fas fa-external-link-alt ml-1 text-sm"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Project: Trackmate Watch Website -->
+                    <div class="portfolio-item w-full sm:w-1/2 lg:w-1/3">
+                        <img src="https://i.ibb.co/XfJj6BMR/IMG-20250727-WA0030.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/D1E9FF/3B82F6?text=Trackmate+Watch+Website';" class="w-full h-64 object-cover rounded-t-lg" alt="Trackmate Watch Website">
+                        <div class="p-4">
+                            <h4 class="text-2xl font-bold text-gray-900 mb-2">Trackmate Watch Website</h4>
+                            <p class="text-sm text-gray-700 mb-3">Developed a frontend website showcasing a health-tracking smartwatch, detailing its features for monitoring health metrics and overall well-being.</p>
+                            <p class="text-xs text-gray-500 mb-4">Tech Stack: HTML, CSS, JavaScript</p>
+                            <div class="portfolio-links flex justify-start items-center">
+                                <a href="#" title="Live Demo" class="text-blue-600 hover:text-blue-800 transition duration-300 flex items-center text-base">
+                                    Live Demo <i class="fas fa-external-link-alt ml-1 text-sm"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more projects as needed -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume" class="section-padding bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="section-title text-center">
+                    <h2>Resume</h2>
+                    <p class="mt-4 text-lg max-w-3xl mx-auto">
+                        A summary of my academic and professional journey.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10">
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">Summary</h3>
+                        <div class="resume-item relative pl-8 pb-8 before:content-[''] before:absolute before:left-0 before:top-0 before:h-full before:w-0.5 before:bg-gray-300 before:rounded-full after:content-[''] after:absolute after:left-0 after:top-0 after:w-4 after:h-4 after:bg-blue-500 after:rounded-full after:-ml-2 after:mt-1.5 border-l border-gray-200">
+                            <h4 class="text-2xl font-bold text-gray-800">R T Raviteja</h4>
+                            <p class="italic text-gray-600 mb-2">
+                                Aspiring Software Development Engineer (SDE) with a solid foundation in object-oriented programming, data structures, algorithms, and full-stack web development. Passionate about solving complex problems. Seeking to apply my technical and problem-solving skills in a challenging role where I can grow while adding value to the team.
+                            </p>
+                            <ul class="list-none pl-5 text-gray-700 space-y-2">
+                                <li><span class="text-blue-500 mr-2">&bull;</span> Tirupati, India</li>
+                                <li><span class="text-blue-500 mr-2">&bull;</span> +91 90635 62208</li>
+                                <li><span class="text-blue-500 mr-2">&bull;</span> raviteja2674.rt@gmail.com</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="text-3xl font-bold text-gray-800 mt-10 mb-6 border-b-2 border-blue-500 pb-2">Education</h3>
+                        <div class="resume-item relative pl-8 pb-8 before:content-[''] before:absolute before:left-0 before:top-0 before:h-full before:w-0.5 before:bg-gray-300 before:rounded-full after:content-[''] after:absolute after:left-0 after:top-0 after:w-4 after:h-4 after:bg-blue-500 after:rounded-full after:-ml-2 after:mt-1.5 border-l border-gray-200">
+                            <h4 class="text-2xl font-bold text-gray-800">Bachelor of Technology in Computer Science Engineering</h4>
+                            <h5 class="text-blue-600 text-lg font-semibold">August 2022 - Present</h5>
+                            <p class="italic text-gray-600">Mohan Babu University, Tirupati</p>
+                            <p class="mt-2 text-gray-700">
+                                CGPA : 9.23
+                            </p>
+                        </div>
+                        <div class="resume-item relative pl-8 pb-8 before:content-[''] before:absolute before:left-0 before:top-0 before:h-full before:w-0.5 before:bg-gray-300 before:rounded-full after:content-[''] after:absolute after:left-0 after:top-0 after:w-4 after:h-4 after:bg-blue-500 after:rounded-full after:-ml-2 after:mt-1.5 border-l border-2 border-gray-200">
+                            <h4 class="text-2xl font-bold text-gray-800">Intermediate - MPC</h4>
+                            <h5 class="text-blue-600 text-lg font-semibold">July 2020 - June 2022</h5>
+                            <p class="italic text-gray-600">Sri Chaitanya College, Vijayawada</p>
+                            <p class="mt-2 text-gray-700">
+                                Percentage : 87%
+                            </p>
+                        </div>
+                        <div class="resume-item relative pl-8 pb-8 before:content-[''] before:absolute before:left-0 before:top-0 before:h-full before:w-0.5 before:bg-gray-300 before:rounded-full after:content-[''] after:absolute after:left-0 after:top-0 after:w-4 after:h-4 after:bg-blue-500 after:rounded-full after:-ml-2 after:mt-1.5 border-l border-gray-200">
+                            <h4 class="text-2xl font-bold text-gray-800">SSC</h4>
+                            <h5 class="text-blue-600 text-lg font-semibold">Passed out : 2020</h5>
+                            <p class="italic text-gray-600">Prasad Schools, Anantapur</p>
+                            <p class="mt-2 text-gray-700">
+                                Percentage : 93%
+                            </p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">Work Experience</h3>
+                        <div class="resume-item relative pl-8 pb-8 before:content-[''] before:absolute before:left-0 before:top-0 before:h-full before:w-0.5 before:bg-gray-300 before:rounded-full after:content-[''] after:absolute after:left-0 after:top-0 after:w-4 after:h-4 after:bg-blue-500 after:rounded-full after:-ml-2 after:mt-1.5 border-l border-gray-200">
+                            <h4 class="text-2xl font-bold text-gray-800">Data Engineering Virtual Internship</h4>
+                            <h5 class="text-blue-600 text-lg font-semibold">Jan - March 2025 (10 Weeks)</h5>
+                            <p class="italic text-gray-600">AWS Academy / Eduskills (AICTE Approved)</p>
+                            <ul class="list-none pl-5 text-gray-700 space-y-2">
+                                <li>Completed a 10-week virtual internship focused on data engineering, with curriculum provided by AWS Academy.</li>
+                                <li>Gained practical knowledge in data processing, storage, and analysis within an industry-recognized framework.</li>
+                                <li>Internship was AICTE approved and facilitated through the National Internship Portal by Eduskills.</li>
+                            </ul>
+                        </div>
+                        <div class="resume-item relative pl-8 pb-8 before:content-[''] before:absolute before:left-0 before:top-0 before:h-full before:w-0.5 before:bg-gray-300 before:rounded-full after:content-[''] after:absolute after:left-0 after:top-0 after:w-4 after:h-4 after:bg-blue-500 after:rounded-full after:-ml-2 after:mt-1.5 border-l border-gray-200">
+                            <h4 class="text-2xl font-bold text-gray-800">Entrepreneurial Thinking Course</h4>
+                            <h5 class="text-blue-600 text-lg font-semibold">May 2024 - July 2024</h5>
+                            <p class="italic text-gray-600">IUCEE</p>
+                            <ul class="list-none pl-5 text-gray-700 space-y-2">
+                                <li>Completed an Entrepreneurial Thinking course, acquiring advanced insights into entrepreneurial strategies and mindset.</li>
+                                <li>Certified as a trainee, enhancing my capability to drive innovation and business success.</li>
+                            </ul>
+                        </div>
+                        <div class="resume-item relative pl-8 pb-8 before:content-[''] before:absolute before:left-0 before:top-0 before:h-full before:w-0.5 before:bg-gray-300 before:rounded-full after:content-[''] after:absolute after:left-0 after:top-0 after:w-4 after:h-4 after:bg-blue-500 after:rounded-full after:-ml-2 after:mt-1.5 border-l border-gray-200">
+                            <h4 class="text-2xl font-bold text-gray-800">Cybersecurity Intern</h4>
+                            <h5 class="text-blue-600 text-lg font-semibold">Mar 2024 - June 2024</h5>
+                            <p class="italic text-gray-600">Internship Studio</p>
+                            <ul class="list-none pl-5 text-gray-700 space-y-2">
+                                <li>Completed hands-on training in ethical hacking, penetration testing, and digital infrastructure protection.</li>
+                                <li>Certified, with hands-on experience in safeguarding and fortifying digital infrastructures.</li>
+                            </ul>
+                        </div>
+                        <div class="resume-item relative pl-8 pb-8 before:content-[''] before:absolute before:left-0 before:top-0 before:h-full before:w-0.5 before:bg-gray-300 before:rounded-full after:content-[''] after:absolute after:left-0 after:top-0 after:w-4 after:h-4 after:bg-blue-500 after:rounded-full after:-ml-2 after:mt-1.5 border-l border-gray-200">
+                            <h4 class="text-2xl font-bold text-gray-800">Web Development Intern</h4>
+                            <h5 class="text-blue-600 text-lg font-semibold">Nov 2023 - Dec 2023</h5>
+                            <p class="italic text-gray-600">Bharat Intern</p>
+                            <ul class="list-none pl-5 text-gray-700 space-y-2">
+                                <li>Successfully undertook a web development internship, deepening expertise in website design and development.</li>
+                                <li>Acquired practical experience in building and enhancing websites using cutting-edge web technologies.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-padding bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="section-title text-center">
+                    <h2>Contact</h2>
+                    <p class="mt-4 text-lg max-w-3xl mx-auto">
+                        Have a question or a project in mind? Feel free to reach out!
+                    </p>
+                </div>
+
+                <div class="flex flex-col lg:flex-row gap-10 mt-10">
+                    <div class="lg:w-5/12">
+                        <div class="info p-8 bg-white rounded-lg shadow-md mb-8">
+                            <div class="address flex items-center mb-4">
+                                <i class="fas fa-map-marker-alt text-blue-500 text-2xl mr-4"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">Location:</h4>
+                                    <p class="text-gray-700">Tirupati, India</p>
+                                </div>
+                            </div>
+                            <div class="email flex items-center mb-4">
+                                <i class="fas fa-envelope text-blue-500 text-2xl mr-4"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">Email:</h4>
+                                    <p class="text-gray-700">raviteja2674.rt@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="phone flex items-center">
+                                <i class="fas fa-phone-alt text-blue-500 text-2xl mr-4"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">Call:</h4>
+                                    <p class="text-gray-700">+91 90635 62208</p>
+                                </div>
+                            </div>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.670357672654!2d79.3775432749767!3d13.435532000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4d49d9a0d8e23f%3A0x63a92b21b0e0d5a!2sMohan%20Babu%20University!5e0!3m2!1sen!2sin!4v1708573215000!5m2!1sen!2sin" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen="" loading="lazy" class="mt-6 rounded-lg shadow-sm"></iframe>
+                        </div>
+                    </div>
+
+                    <div class="lg:w-7/12">
+                        <form name="contact" method="POST" data-netlify="true" class="php-email-form p-8 bg-white rounded-lg shadow-md">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            <div class="form-group mb-4">
+                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                            </div>
+                            <div class="form-group mb-4">
+                                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="inline-block px-8 py-3 rounded-md text-lg font-semibold shadow-md transition duration-300 transform hover:scale-105">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main><!-- End #main -->
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        // Mobile nav toggle
+        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+        const header = document.getElementById('header');
+        const main = document.getElementById('main');
+
+        if (mobileNavToggle) {
+            mobileNavToggle.addEventListener('click', function() {
+                header.classList.toggle('header-show');
+                this.classList.toggle('fa-bars');
+                this.classList.toggle('fa-times');
+                main.classList.toggle('lg:ml-0'); /* Adjust main content margin on mobile */
+            });
+        }
+
+        // Close mobile nav when clicking a link
+        document.querySelectorAll('#navbar .nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                if (header.classList.contains('header-show')) {
+                    header.classList.remove('header-show');
+                    mobileNavToggle.classList.remove('fa-times');
+                    mobileNavToggle.classList.add('fa-bars');
+                    main.classList.remove('lg:ml-0');
+                }
+            });
+        });
+
+        // Active state for nav links on scroll
+        const navLinks = document.querySelectorAll('#navbar .nav-link');
+        const sections = document.querySelectorAll('section');
+
+        function activateNavLink() {
+            let currentScroll = window.scrollY + 200; // Add offset for fixed header
+            sections.forEach(section => {
+                // Ensure the section exists and is within view
+                if (section.offsetTop <= currentScroll && section.offsetTop + section.offsetHeight > currentScroll) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + section.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        window.addEventListener('load', activateNavLink);
+        document.addEventListener('scroll', activateNavLink);
+
+        // Dark Mode Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlElement = document.documentElement; // Get the <html> element
+
+        // Function to set theme
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                htmlElement.classList.add('dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlElement.classList.remove('dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check for saved theme preference on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            // Prioritize dark mode if no specific preference or if system prefers dark
+            if (!savedTheme || savedTheme === 'dark' || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && savedTheme !== 'light')) {
+                setTheme('dark');
+            } else {
+                setTheme('light'); // Default to light mode
+            }
+        });
+
+        // Toggle theme on button click
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+    </script>
+</body>
+</html>
