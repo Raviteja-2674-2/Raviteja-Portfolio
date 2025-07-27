@@ -234,6 +234,8 @@
 
         /* Section heading styles */
         .section-title {
+            /* Added margin-top for spacing between sections */
+            margin-top: 5rem; /* Adjust as needed for desired spacing */
             padding-bottom: 30px;
         }
         .section-title h2 {
@@ -333,6 +335,9 @@
             color: #fff;
             padding: 20px;
             text-align: center;
+        }
+        .portfolio-item:hover .portfolio-info {
+            opacity: 1;
         }
         .portfolio-info h4 {
             font-size: 24px;
@@ -790,7 +795,11 @@
                     </div>
 
                     <div class="lg:w-7/12">
-                        <form name="contact" method="POST" data-netlify="true" class="php-email-form p-8 bg-white rounded-lg shadow-md">
+                        <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="php-email-form p-8 bg-white rounded-lg shadow-md">
+                            <input type="hidden" name="form-name" value="contact">
+                            <div hidden>
+                                <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+                            </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                 <div class="form-group">
                                     <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
